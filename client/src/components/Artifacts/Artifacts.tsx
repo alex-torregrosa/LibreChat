@@ -9,6 +9,7 @@ import { useEditorContext } from '~/Providers';
 import useLocalize from '~/hooks/useLocalize';
 import ArtifactTabs from './ArtifactTabs';
 import { CopyCodeButton } from './Code';
+import { needsPreview } from '~/utils/artifacts';
 import store from '~/store';
 
 export default function Artifacts() {
@@ -48,6 +49,8 @@ export default function Artifacts() {
     setTimeout(() => setIsRefreshing(false), 750);
   };
 
+  const hasPreview = needsPreview(currentArtifact.type ?? '');
+
   return (
     <Tabs.Root value={activeTab} onValueChange={setActiveTab} asChild>
       {/* Main Parent */}
@@ -84,7 +87,7 @@ export default function Artifacts() {
             </div>
             <div className="flex items-center">
               {/* Refresh button */}
-              {activeTab === 'preview' && (
+              {hasPreview && activeTab === 'preview' && (
                 <button
                   className={`mr-2 text-text-secondary transition-transform duration-500 ease-in-out ${
                     isRefreshing ? 'rotate-180' : ''
@@ -103,7 +106,7 @@ export default function Artifacts() {
                 <RefreshCw size={16} className="mr-2 animate-spin text-text-secondary" />
               )}
               {/* Tabs */}
-              <Tabs.List className="mr-2 inline-flex h-7 rounded-full border border-border-medium bg-surface-tertiary">
+              {hasPreview && <Tabs.List className="mr-2 inline-flex h-7 rounded-full border border-border-medium bg-surface-tertiary">
                 <Tabs.Trigger
                   value="preview"
                   disabled={isMutating}
@@ -117,7 +120,7 @@ export default function Artifacts() {
                 >
                   {localize('com_ui_code')}
                 </Tabs.Trigger>
-              </Tabs.List>
+              </Tabs.List>}
               <button
                 className="text-text-secondary"
                 onClick={() => {

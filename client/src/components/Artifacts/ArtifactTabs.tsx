@@ -6,6 +6,8 @@ import useArtifactProps from '~/hooks/Artifacts/useArtifactProps';
 import { useAutoScroll } from '~/hooks/Artifacts/useAutoScroll';
 import { ArtifactCodeEditor } from './ArtifactCodeEditor';
 import { ArtifactPreview } from './ArtifactPreview';
+import { isProse } from '~/utils/artifacts';
+import { CodeMarkdown } from './Code';
 import { cn } from '~/utils';
 
 export default function ArtifactTabs({
@@ -33,15 +35,21 @@ export default function ArtifactTabs({
         id="artifacts-code"
         className={cn('flex-grow overflow-auto')}
       >
-        <ArtifactCodeEditor
-          files={files}
-          fileKey={fileKey}
-          template={template}
-          artifact={artifact}
-          editorRef={editorRef}
-          sharedProps={sharedProps}
-          isSubmitting={isSubmitting}
-        />
+        {isProse(artifact.type) ?
+          <CodeMarkdown
+            content={artifact.content ?? ''}
+            isSubmitting={isSubmitting}
+          />
+        : <ArtifactCodeEditor
+            files={files}
+            fileKey={fileKey}
+            template={template}
+            artifact={artifact}
+            editorRef={editorRef}
+            sharedProps={sharedProps}
+            isSubmitting={isSubmitting}
+          />
+        }
       </Tabs.Content>
       <Tabs.Content
         value="preview"
