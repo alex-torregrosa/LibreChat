@@ -29,7 +29,7 @@ const {
 } = require('~/app/clients/prompts');
 const { spendTokens, spendStructuredTokens } = require('~/models/spendTokens');
 const { getBufferString, HumanMessage } = require('@langchain/core/messages');
-const { encodeAndFormat } = require('~/server/services/Files/images/encode');
+const { encodeAndFormat } = require('~/server/services/Files/encode');
 const Tokenizer = require('~/server/services/Tokenizer');
 const BaseClient = require('~/app/clients/BaseClient');
 const { createRun } = require('./run');

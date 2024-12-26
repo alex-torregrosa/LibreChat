@@ -17,7 +17,7 @@ const {
   AuthKeys,
 } = require('librechat-data-provider');
 const { getSafetySettings } = require('~/server/services/Endpoints/google/llm');
-const { encodeAndFormat } = require('~/server/services/Files/images');
+const { encodeAndFormat } = require('~/server/services/Files/encode');
 const Tokenizer = require('~/server/services/Tokenizer');
 const { spendTokens } = require('~/models/spendTokens');
 const { getModelMaxTokens } = require('~/utils');

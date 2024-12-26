@@ -23,7 +23,7 @@ const {
 } = require('~/server/services/Endpoints/anthropic/helpers');
 const { getModelMaxTokens, getModelMaxOutputTokens, matchModelName } = require('~/utils');
 const { spendTokens, spendStructuredTokens } = require('~/models/spendTokens');
-const { encodeAndFormat } = require('~/server/services/Files/images/encode');
+const { encodeAndFormat } = require('~/server/services/Files/encode');
 const Tokenizer = require('~/server/services/Tokenizer');
 const { logger, sendEvent } = require('~/config');
 const { sleep } = require('~/server/utils');

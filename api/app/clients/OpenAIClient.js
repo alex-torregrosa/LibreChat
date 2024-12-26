@@ -29,7 +29,7 @@ const {
   titleInstruction,
   createContextHandlers,
 } = require('./prompts');
-const { encodeAndFormat } = require('~/server/services/Files/images/encode');
+const { encodeAndFormat } = require('~/server/services/Files/encode');
 const { addSpaceIfNeeded, isEnabled, sleep } = require('~/server/utils');
 const Tokenizer = require('~/server/services/Tokenizer');
 const { spendTokens } = require('~/models/spendTokens');
