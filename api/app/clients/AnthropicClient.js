@@ -290,7 +290,7 @@ class AnthropicClient extends BaseClient {
     return Math.ceil((width * height) / 750);
   }
 
-  async addImageURLs(message, attachments) {
+  async addFileURLs(message, attachments) {
     const { files, image_urls } = await encodeAndFormat(
       this.options.req,
       attachments,
@@ -370,7 +370,7 @@ class AnthropicClient extends BaseClient {
         };
       }
 
-      const files = await this.addImageURLs(latestMessage, attachments);
+      const files = await this.addFileURLs(latestMessage, attachments);
 
       this.options.attachments = files;
     }
